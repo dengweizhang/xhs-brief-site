@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>日更一周挑战 · 计算不可约性</title>
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  .progress { height: 10px; border-radius: 999px; background: #202737; overflow: hidden; margin: 6px 0 4px; }
+  .progress > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), #ff8a5c); }
+  .day { display: grid; grid-template-columns: 78px 1fr auto; gap: 14px; align-items: start;
+    padding: 16px 0; border-top: 1px solid var(--line); }
+  .day:first-child { border-top: none; }
+  .day .when { font-variant-numeric: tabular-nums; }
+  .day .when b { display: block; font-size: 20px; }
+  .day .when span { font-size: 12px; color: var(--muted); }
+  .day h3 { margin: 0 0 4px; font-size: 16px; }
+  .day .src { font-size: 12px; color: var(--muted); }
+  .day .quote { margin-top: 8px; font-size: 13px; color: var(--accent-2); }
+  .st { font-size: 11px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .st.published { color: var(--good); border-color: rgba(53,211,154,.45); background: rgba(53,211,154,.1); }
+  .st.failed { color: #ff6b6b; border-color: rgba(255,107,107,.45); background: rgba(255,107,107,.1); }
+  .st.planned { color: var(--warn); border-color: rgba(242,201,76,.4); background: rgba(242,201,76,.08); }
+  .kpis { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="hero-main">
+      <div class="badge">公开挑战 · 周一至周五</div>
+      <h1 id="cname">日更一周挑战</h1>
+      <p class="muted" id="crule"></p>
+      <div class="meta"><a href="./index.html" style="color:var(--accent-2)">← 账号简报</a>
+        <span class="dot">·</span><a href="./topics" style="color:var(--accent-2)">热点雷达</a>
+        <span class="dot">·</span><a href="./reports" style="color:var(--accent-2)">历史报告</a></div>
+    </div>
+    <div class="card" style="min-width:240px">
+      <div class="kpis">
+        <div><div style="font-size:26px;font-weight:650" id="done">0</div><div class="hint">已发布</div></div>
+        <div><div style="font-size:26px;font-weight:650" id="planned">0</div><div class="hint">待发布</div></div>
+        <div><div style="font-size:26px;font-weight:650" id="failed">0</div><div class="hint">失败</div></div>
+      </div>
+      <div class="progress"><i id="bar" style="width:0%"></i></div>
+      <div class="hint" id="stamp"></div>
+    </div>
+  </header>
+
+  <div class="card">
+    <div id="days"></div>
+    <p class="hint" id="theme" style="margin-top:14px"></p>
+  </div>
+</div>
+<script>
+(function () {
+  function badge(status) {
+    var s = document.createElement("span");
+    s.className = "st " + status;
+    s.textContent = { published: "已发布", failed: "失败", planned: "待发布" }[status] || status;
+    return s;
+  }
+  fetch("./data/challenge.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    var c = d.challenge || {};
+    document.getElementById("cname").textContent = c.name || "日更挑战";
+    document.getElementById("crule").textContent = (c.rule || "") + (c.start ? "（" + c.start + " → " + (c.end || "") + "）" : "");
+    document.getElementById("theme").textContent = c.theme ? "内容来源：" + c.theme : "";
+    document.getElementById("stamp").textContent = "更新于 " + String(d.updated_at || "").replace("T", " ").slice(0, 16);
+
+    var days = d.days || [];
+    var published = days.filter(function (x) { return x.status === "published"; }).length;
+    var failed = days.filter(function (x) { return x.status === "failed"; }).length;
+    document.getElementById("done").textContent = published;
+    document.getElementById("failed").textContent = failed;
+    document.getElementById("planned").textContent = days.length - published - failed;
+
+    var total = days.length || 1;
+    document.getElementById("bar").style.width = Math.round(published / total * 100) + "%";
+
+    var box = document.getElementById("days");
+    box.innerHTML = "";
+    days.forEach(function (day) {
+      var row = document.createElement("div");
+      row.className = "day";
+
+      var when = document.createElement("div");
+      when.className = "when";
+      var b = document.createElement("b");
+      b.textContent = (day.date || "").slice(5);
+      var wd = document.createElement("span");
+      wd.textContent = day.weekday || "";
+      when.appendChild(b); when.appendChild(wd);
+
+      var mid = document.createElement("div");
+      var h = document.createElement("h3");
+      h.textContent = day.title || "（未命名）";
+      var src = document.createElement("div");
+      src.className = "src";
+      src.textContent = (day.source || "") + (day.at ? " · " + day.at : "");
+      mid.appendChild(h); mid.appendChild(src);
+      if (day.quote) {
+        var q = document.createElement("div");
+        q.className = "quote";
+        q.textContent = "「" + day.quote + "」";
+        mid.appendChild(q);
+      }
+
+      row.appendChild(when);
+      row.appendChild(mid);
+      row.appendChild(badge(day.status || "planned"));
+      box.appendChild(row);
+    });
+  }).catch(function (e) {
+    document.getElementById("days").textContent = "挑战数据加载失败：" + e.message;
+  });
+})();
+</script>
+</body>
+</html>
