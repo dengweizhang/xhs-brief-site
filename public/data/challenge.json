@@ -14,9 +14,9 @@
       "source": "凯文·凯利《宝贵的人生建议》",
       "quote": "做事要以终为始。碗碟架堆满后，再想调整，就无从下手了。",
       "status": "failed",
-      "detail": "state: {\"title\": \"一天从吃饭开始，不从改稿开始\", \"visibility\": \"public\", \"dry_run\": false}",
+      "detail": "published=false",
       "private": false,
-      "at": "07:42"
+      "at": "07:44"
     },
     {
       "date": "2026-10-20",
@@ -55,5 +55,5 @@
       "detail": "待发布"
     }
   ],
-  "updated_at": "2026-10-19T07:42:35+08:00"
+  "updated_at": "2026-10-19T07:44:53+08:00"
 }
