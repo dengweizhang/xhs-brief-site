@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>计算不可约性 · 小红书运营简报</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="hero-main">
+      <div class="badge">每日更新 · 北京时间 07:00</div>
+      <h1 id="acct-name">计算不可约性</h1>
+      <p id="acct-desc" class="muted"></p>
+      <div class="meta">
+        <span id="acct-id"></span>
+        <span class="dot">·</span>
+        <span id="acct-pos"></span>
+        <span class="dot">·</span>
+        <span id="updated"></span>
+      </div>
+    </div>
+    <div class="hero-kpis" id="kpis"></div>
+  </header>
+
+  <section class="grid">
+    <div class="card span-2">
+      <div class="card-head">
+        <h2>热门话题雷达</h2>
+        <span class="hint">热度为综合排序，非平台官方指数</span>
+      </div>
+      <div id="topics"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>内容体检</h2>
+      </div>
+      <ul id="diagnosis" class="diag"></ul>
+    </div>
+
+    <div class="card span-2">
+      <div class="card-head">
+        <h2>我的笔记表现</h2>
+        <span class="hint">点赞数 · 取 Top 10</span>
+      </div>
+      <div id="notes-chart"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>值得押注的三个方向</h2>
+      </div>
+      <div id="directions" class="dirs"></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <strong>数据来源</strong>
+      <ul id="sources"></ul>
+    </div>
+    <div class="muted small">
+      本页由 Hermes 生成 · 数据落在仓库 <code>public/data/brief.json</code>，每次更新该文件即刷新站点
+    </div>
+  </footer>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>
