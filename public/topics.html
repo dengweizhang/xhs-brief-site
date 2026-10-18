@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>热点雷达 · 计算不可约性</title>
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .toolbar input {
+    flex: 1 1 220px; min-width: 180px; background: var(--panel-2); border: 1px solid var(--line);
+    color: var(--text); border-radius: 10px; padding: 9px 12px; font-size: 14px;
+  }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tab { background: var(--panel-2); border: 1px solid var(--line); color: var(--muted);
+    padding: 6px 12px; border-radius: 999px; font-size: 13px; cursor: pointer; }
+  .tab.on { color: #fff; border-color: rgba(255,77,103,.6); background: rgba(255,77,103,.16); }
+  .hot-row { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center;
+    padding: 9px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .hot-row:first-child { border-top: none; }
+  .hot-row .r { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hot-row .r.top { color: var(--accent); font-weight: 650; }
+  .hot-row a { color: var(--text); text-decoration: none; }
+  .hot-row a:hover { color: var(--accent); }
+  .hot-row .h { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="hero-main">
+      <div class="badge">热点雷达 · 第三方聚合</div>
+      <h1>今天大家在聊什么</h1>
+      <p class="muted">微博 / 抖音 / 知乎 / B站 / 小红书 等平台的实时榜，按平台切换，可搜索</p>
+      <div class="meta"><a href="./index.html" style="color:var(--accent-2)">← 回到账号简报</a>
+        <span class="dot">·</span><a href="./reports.html" style="color:var(--accent-2)">历史报告</a></div>
+    </div>
+  </header>
+
+  <div class="card">
+    <div class="toolbar">
+      <input id="q" placeholder="搜索话题关键词，例如：AI、旅行、职场" />
+      <span class="hint" id="stamp"></span>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div id="list"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script>
+(function () {
+  var state = { data: null, platform: "", query: "" };
+  var PREF = ["小红书", "微博热搜", "抖音热点", "知乎热榜", "哔哩哔哩"];
+
+  function load() {
+    fetch("./data/hot.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+      state.data = d;
+      var names = Object.keys(d.platforms || {});
+      names.sort(function (a, b) {
+        var ia = PREF.indexOf(a), ib = PREF.indexOf(b);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      });
+      state.platform = names[0] || "";
+      document.getElementById("stamp").textContent = "快照 " + String(d.generated_at || "").replace("T", " ").slice(0, 16);
+      document.getElementById("note").textContent = (d.source_note || "") + " 来源：" + (d.source || "");
+      renderTabs(names);
+      render();
+    }).catch(function (e) {
+      document.getElementById("list").textContent = "热点数据加载失败：" + e.message;
+    });
+  }
+
+  function renderTabs(names) {
+    var box = document.getElementById("tabs");
+    box.innerHTML = "";
+    names.forEach(function (n) {
+      var b = document.createElement("button");
+      b.className = "tab" + (n === state.platform ? " on" : "");
+      b.textContent = n + " (" + state.data.platforms[n].length + ")";
+      b.onclick = function () { state.platform = n; renderTabs(names); render(); };
+      box.appendChild(b);
+    });
+  }
+
+  function rowsFor() {
+    var q = state.query.trim();
+    if (q) {
+      var out = [];
+      Object.keys(state.data.platforms).forEach(function (p) {
+        state.data.platforms[p].forEach(function (it) {
+          if ((it.title || "").indexOf(q) >= 0) out.push({ p: p, it: it });
+        });
+      });
+      return out;
+    }
+    return (state.data.platforms[state.platform] || []).map(function (it) { return { p: state.platform, it: it }; });
+  }
+
+  function render() {
+    var rows = rowsFor();
+    var box = document.getElementById("list");
+    box.innerHTML = "";
+    if (!rows.length) { box.textContent = "没有匹配的话题"; return; }
+    rows.slice(0, 60).forEach(function (row) {
+      var d = document.createElement("div");
+      d.className = "hot-row";
+      var r = document.createElement("span");
+      r.className = "r" + (row.it.rank <= 3 ? " top" : "");
+      r.textContent = row.it.rank;
+      var a = document.createElement("a");
+      a.href = row.it.url || "#";
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = row.it.title + (state.query ? "  ·  " + row.p : "");
+      var h = document.createElement("span");
+      h.className = "h";
+      h.textContent = row.it.hot != null ? row.it.hot : "";
+      d.appendChild(r); d.appendChild(a); d.appendChild(h);
+      box.appendChild(d);
+    });
+  }
+
+  document.getElementById("q").addEventListener("input", function (e) {
+    state.query = e.target.value;
+    render();
+  });
+  load();
+})();
+</script>
+</body>
+</html>
