@@ -1,7 +1,63 @@
 {
-  "generated_at": "2026-11-26T19:03:08",
-  "count": 125,
+  "generated_at": "2026-11-27T19:03:07",
+  "count": 128,
   "reports": [
+    {
+      "date": "2026-11-27",
+      "time": "14:03",
+      "kind": "5d9aa71aa420",
+      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-27 14:03:50\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 0 个",
+      "chars": 133
+    },
+    {
+      "date": "2026-11-27",
+      "time": "13:41",
+      "kind": "aaefb4b5ccfb",
+      "text": "# Cron Job: 宜家凳子优惠监控\n\n**Job ID:** aaefb4b5ccfb\n**Run Time:** 2026-11-27 13:41:23\n**Mode:** no_agent (script)\n\n---\n\n抓到 33 个凳子，触发 0 条提醒",
+      "chars": 133
+    },
+    {
+      "date": "2026-11-27",
+      "time": "12:00",
+      "kind": "ab304646518c",
+      "text": "NOVA 设备离线，两次推送均返回 `HTTP 503: Terminal offline`，消息未上屏。",
+      "chars": 53
+    },
+    {
+      "date": "2026-11-27",
+      "time": "08:02",
+      "kind": "5d9aa71aa420",
+      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-27 08:02:48\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 0 个",
+      "chars": 133
+    },
+    {
+      "date": "2026-11-27",
+      "time": "02:01",
+      "kind": "5d9aa71aa420",
+      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-27 02:01:51\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 1 个\n  [尾货] TRIBORD男士帆船软壳夹克300  ￥169.90 / 8.5折 / 原价￥199.90",
+      "chars": 187
+    },
+    {
+      "date": "2026-11-27",
+      "time": "01:40",
+      "kind": "aaefb4b5ccfb",
+      "text": "# Cron Job: 宜家凳子优惠监控\n\n**Job ID:** aaefb4b5ccfb\n**Run Time:** 2026-11-27 01:40:23\n**Mode:** no_agent (script)\n\n---\n\n抓到 33 个凳子，触发 0 条提醒",
+      "chars": 133
+    },
+    {
+      "date": "2026-11-26",
+      "time": "20:00",
+      "kind": "5d9aa71aa420",
+      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-26 20:00:55\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 1 个\n  [尾货] TRIBORD航海保暖夹克 Sailing 300 Boy green  ￥169.90 / 8.5折 / 原价￥199.90\n[push] failed: Command '['/home/davin/.hermes/hermes-agent/.hermes/bin/hermes', 'send', '-t', 'telegram:5826018449', '迪卡侬尾货上新 1 件\\n\\n· [尾货] TRIBORD航海保暖夹克 Sailing 300 Boy green  ￥169.90 / 8.5折 / 原价￥199.90\\n\\nhttps://www.decathlon.com.cn/product-list?category_id=644a1c540c5c730001d1e6c1']' returned non-zero exit status 1.",
+      "chars": 526
+    },
+    {
+      "date": "2026-11-26",
+      "time": "19:03",
+      "kind": "每日简报",
+      "text": "**账号数据**\n- 10 粉 / 391 赞藏 / 关注 44 / 37 条笔记；近 37 条笔记点赞合计 275，与前一日完全相同\n- 变化最大的三项：无。粉丝与赞藏零变动，逐条比 37 条笔记的点赞数，一条未变\n- 《灵魂之爱》65、《七秒之外》40、《以终为始》25 座次不变；距上次发笔记 34 天，粉丝连续第 31 天卡 10\n- 首次运行因浏览器启动超时失败，重跑 CDP 成功（数据取自实测页面，非旧文件）\n\n**领域趋势**\n- 11/26 早榜前五中四条是猫：非诚勿扰大学生版 2338.84 万登顶，猫爬架 2310 万、流浪猫阳光房 2198 万、猫科揣手手 2136 万，GTA6 退到第 4（dataxapi.com）\n- 相亲/围观式婚恋是长期母题不是一时热：小红书云相亲、「王婆说媒」式速配被称接地气版非诚勿扰（thepaper.cn / theinitium.com）\n- 11/4「清朗·整治虚假人设」已处置 1.9 万余篇笔记、718 个账号，编造冲突剧情、AI 仿冒人物在列（xiaohongshuzc.com / xiaohongshu.games）\n\n**行动建议**\n- 《七秒之外》续篇：只写关掉闹钟后那七秒，末句发问，不升华\n- 写一次相亲现场的两三轮原话对话，不点评对方、不总结婚恋观\n\n站点已更新：main @ 14e71bb（Cloudflare Pages 重建中）",
+      "chars": 612
+    },
     {
       "date": "2026-11-26",
       "time": "13:59",
@@ -633,20 +689,6 @@
       "chars": 133
     },
     {
-      "date": "2026-11-15",
-      "time": "01:13",
-      "kind": "5d9aa71aa420",
-      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-15 01:13:48\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 0 个",
-      "chars": 133
-    },
-    {
-      "date": "2026-11-14",
-      "time": "19:12",
-      "kind": "5d9aa71aa420",
-      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-14 19:12:53\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 2 个\n  [特惠] TRIBORD女式帆船防水冲锋衣保暖夹克Sailing 300 black purple  ￥199.90 / 8折 / 原价￥249.90\n  [特惠] QUECHUA男士山地徒步摇粒绒保暖夹克MH900，深海绿松石色  ￥179.90 / 6折 / 原价￥299.90",
-      "chars": 277
-    },
-    {
       "date": "2026-11-14",
       "time": "19:02",
       "kind": "每日简报",
@@ -658,13 +700,6 @@
       "time": "13:15",
       "kind": "aaefb4b5ccfb",
       "text": "# Cron Job: 宜家凳子优惠监控\n\n**Job ID:** aaefb4b5ccfb\n**Run Time:** 2026-11-14 13:15:22\n**Mode:** no_agent (script)\n\n---\n\n抓到 32 个凳子，触发 0 条提醒",
-      "chars": 133
-    },
-    {
-      "date": "2026-11-14",
-      "time": "13:11",
-      "kind": "5d9aa71aa420",
-      "text": "# Cron Job: 迪卡侬尾货监控\n\n**Job ID:** 5d9aa71aa420\n**Run Time:** 2026-11-14 13:11:57\n**Mode:** no_agent (script)\n\n---\n\n抓到 20 个商品，其中新出现 0 个",
       "chars": 133
     },
     {
@@ -862,20 +897,6 @@
       "kind": "ab304646518c",
       "text": "推送成功：`{\"ok\": true}`，「吃饭不积极 思想有问题」已经在 NOVA 电气鼠屏幕上显示，停留 300 秒（5 分钟）。",
       "chars": 66
-    },
-    {
-      "date": "2026-10-28",
-      "time": "19:02",
-      "kind": "每日简报",
-      "text": "**账号数据**\n- 粉丝 10、关注 44、获赞与收藏 378，今日 07:04 实测（首次调用统计脚本时浏览器未暴露 devtools 端口，浏览器就绪后重试成功）。\n- 三项核心读数连续第二天全零：获赞 378→378（第 3 天静止），粉丝 10→10（第 11 次），《七秒之外》34→34（连续 8 次零增长）。\n- 无新笔记，首屏仍 12 条旧稿，距上次发布已七天。\n- 数据已写入 `outputs/xhs-data/2026-10-29.json`，含与前一天的对比。\n\n**领域趋势**\n- 热榜更换：前排均为「给日常小事起个荒诞新名字」——例如「我的家庭旅行更像是打副本」737 万、「我创造了新型遛狗法」732 万、「拼豆也能当火漆印章玩」750 万（搜搜热 10-28 07:11）。\n- 官方机制确认：50%+ 大盘流量倾斜千粉以下，分发走「识别→种子池→爬坡」三级，只看单篇的停留/评论（人人都是产品经理、大数跨境）。\n- 运营方法：问题式标题点击率约高 3 倍；200–500 小眼睛是生死线（小宇宙「周周搞钱笔记」007）。\n\n**行动建议**\n- 标题改称「我创造了新型××法」，写今天一件真实的小事。\n- 万圣节最后机会：用办公室废料做纸箱鬼屋，今天发。\n\n站点已更新：main @ dfb4914（远端已同步，Cloudflare Pages 重建中）。",
-      "chars": 597
-    },
-    {
-      "date": "2026-10-28",
-      "time": "12:01",
-      "kind": "ab304646518c",
-      "text": "推送成功：NOVA 屏幕显示「吃饭不积极 思想有问题」，停留 300 秒（{\"ok\": true}）。",
-      "chars": 51
     }
   ]
 }
